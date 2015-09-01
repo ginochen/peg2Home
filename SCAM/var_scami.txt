@@ -1,0 +1,160 @@
+/glade/p/cesmdata/cseg/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L30_c031210.nc
+
+netcdf cami_0000-09-01_64x128_L30_c031210 {
+dimensions:
+	time = UNLIMITED ; // (1 currently)
+	lat = 64 ;
+	lon = 128 ;
+	lev = 30 ;
+	chars = 8 ;
+	ilev = 31 ;
+variables:
+	double LANDM_COSLAT(time, lat, lon) ;
+		LANDM_COSLAT:long_name = "land ocean transition mask: ocean (0), continent (1), transition (0-1)" ;
+		LANDM_COSLAT:units = "none" ;
+		LANDM_COSLAT:_FillValue = 1.e+36 ;
+		LANDM_COSLAT:from_hires = "true" ;
+	double lat(lat) ;
+		lat:long_name = "latitude" ;
+		lat:units = "degrees_north" ;
+		lat:_FillValue = 9.99999961690316e+35 ;
+	double lon(lon) ;
+		lon:long_name = "longitude" ;
+		lon:units = "degrees_east" ;
+		lon:_FillValue = 9.99999961690316e+35 ;
+	double time(time) ;
+		time:long_name = "time" ;
+		time:units = "days since 0000-08-29 00:00:00" ;
+		time:calendar = "noleap" ;
+		time:_FillValue = 9.99999961690316e+35 ;
+	double CWAT(time, lat, lev, lon) ;
+		CWAT:long_name = "Total Grid box averaged Condensate Amount (liquid + ice)" ;
+		CWAT:units = "kg/kg" ;
+	double LANDFRAC(time, lat, lon) ;
+		LANDFRAC:long_name = "gridbox land fraction" ;
+		LANDFRAC:units = "FRAC" ;
+		LANDFRAC:_FillValue = 1.e+36 ;
+		LANDFRAC:from_hires = "true" ;
+	double LANDM(time, lat, lon) ;
+		LANDM:long_name = "land ocean transition mask: ocean (0), continent (1), transition (0-1)" ;
+		LANDM:units = "none" ;
+		LANDM:_FillValue = 1.e+36 ;
+		LANDM:from_hires = "true" ;
+	double P0 ;
+		P0:long_name = "reference pressure" ;
+		P0:units = "Pa" ;
+	double PHIS(time, lat, lon) ;
+		PHIS:long_name = "surface geopotential" ;
+		PHIS:units = "M2/S2" ;
+		PHIS:_FillValue = 1.e+36 ;
+		PHIS:from_hires = "true" ;
+	double PS(time, lat, lon) ;
+		PS:long_name = "Surface pressure" ;
+		PS:units = "Pa" ;
+	double Q(time, lat, lev, lon) ;
+		Q:long_name = "Specific humidity" ;
+		Q:units = "kg/kg" ;
+	double SGH(time, lat, lon) ;
+		SGH:long_name = "orography standard deviation" ;
+		SGH:units = "M" ;
+		SGH:_FillValue = 1.e+36 ;
+		SGH:from_hires = "true" ;
+	double SNOWHICE(time, lat, lon) ;
+		SNOWHICE:long_name = "Water equivalent snow depth" ;
+		SNOWHICE:units = "m" ;
+	double T(time, lat, lev, lon) ;
+		T:long_name = "Temperature" ;
+		T:units = "K" ;
+	double TS(time, lat, lon) ;
+		TS:long_name = "Surface temperature" ;
+		TS:units = "K" ;
+	double TS1(time, lat, lon) ;
+		TS1:long_name = "TS1      subsoil temperature" ;
+		TS1:units = "K" ;
+	double TS2(time, lat, lon) ;
+		TS2:long_name = "TS2      subsoil temperature" ;
+		TS2:units = "K" ;
+	double TS3(time, lat, lon) ;
+		TS3:long_name = "TS3      subsoil temperature" ;
+		TS3:units = "K" ;
+	double TS4(time, lat, lon) ;
+		TS4:long_name = "TS4      subsoil temperature" ;
+		TS4:units = "K" ;
+	double TSICE(time, lat, lon) ;
+		TSICE:long_name = "Ice skin temperature" ;
+		TSICE:units = "K" ;
+	double U(time, lat, lev, lon) ;
+		U:long_name = "Zonal wind" ;
+		U:units = "m/s" ;
+	double V(time, lat, lev, lon) ;
+		V:long_name = "Meridional wind" ;
+		V:units = "m/s" ;
+	int date(time) ;
+		date:long_name = "current date (YYYYMMDD)" ;
+	char date_written(time, chars) ;
+	int datesec(time) ;
+		datesec:long_name = "current seconds of current date" ;
+	double gw(lat) ;
+		gw:long_name = "gauss weights" ;
+	double hyai(ilev) ;
+		hyai:long_name = "hybrid A coefficient at layer interfaces" ;
+	double hyam(lev) ;
+		hyam:long_name = "hybrid A coefficient at layer midpoints" ;
+	double hybi(ilev) ;
+		hybi:long_name = "hybrid B coefficient at layer interfaces" ;
+	double hybm(lev) ;
+		hybm:long_name = "hybrid B coefficient at layer midpoints" ;
+	double ilev(ilev) ;
+		ilev:long_name = "hybrid level at interfaces (1000*(A+B))" ;
+		ilev:units = "level" ;
+		ilev:positive = "down" ;
+		ilev:standard_name = "atmosphere_hybrid_sigma_pressure_coordinate" ;
+		ilev:formula_terms = "a: hyai b: hybi p0: P0 ps: PS" ;
+	double lev(lev) ;
+		lev:long_name = "hybrid level at midpoints (1000*(A+B))" ;
+		lev:units = "level" ;
+		lev:positive = "down" ;
+		lev:standard_name = "atmosphere_hybrid_sigma_pressure_coordinate" ;
+		lev:formula_terms = "a: hyam b: hybm p0: P0 ps: PS" ;
+	int mdt ;
+		mdt:long_name = "timestep" ;
+		mdt:units = "s" ;
+	int nbdate ;
+		nbdate:long_name = "base date (YYYYMMDD)" ;
+	int nbsec ;
+		nbsec:long_name = "seconds of base date" ;
+	int ndbase ;
+		ndbase:long_name = "base day" ;
+	int ndcur(time) ;
+		ndcur:long_name = "current day (from base day)" ;
+	int nsbase ;
+		nsbase:long_name = "seconds of base day" ;
+	int nscur(time) ;
+		nscur:long_name = "current seconds of current day" ;
+	int nsteph(time) ;
+		nsteph:long_name = "current timestep" ;
+	int ntrk ;
+		ntrk:long_name = "spectral truncation parameter K" ;
+	int ntrm ;
+		ntrm:long_name = "spectral truncation parameter M" ;
+	int ntrn ;
+		ntrn:long_name = "spectral truncation parameter N" ;
+	char time_written(time, chars) ;
+
+// global attributes:
+		:Conventions = "CF-1.0" ;
+		:logname = "olson" ;
+		:host = "bb0001en" ;
+		:source = "Interpolated from:/fs/cgd/data0/olson/inputIC/newICeul.cam2.i.0000-09-01-00000.nc::CAM" ;
+		:case = "cam2run" ;
+		:title = "Interpolated from:/fs/cgd/data0/olson/inputIC/newICeul.cam2.i.0000-09-01-00000.nc::atm ver atm, eul ver v013, case newICeul" ;
+		:history = "Wed Dec 10 10:19:29 2003: ncks -v LANDFRAC,SGH,PHIS /fs/cgd/csm/inputdata/atm/cam2/inic/gaus/cami_0000-09-01_64x128_L26_c030918.nc cami_0000-09-01_64x128_L30_c031210.nc\n",
+			"\n",
+			"05/07/03 12:15:34 olson:chinookfe:interpic -t SEP1.T42L26.gaussian.template.nc /fs/cgd/data0/olson/inputIC/newICeul.cam2.i.0000-09-01-00000.nc cami_0000-09-01_64x128_L26_c030507.nc\n",
+			"definesurf -t /fs/cgd/csm/inputdata/atm/cam1/hrtopo/topo.nc cami_0000-09-01_64x128_L26_c030507.nc\n",
+			"definesurf -t /fs/cgd/csm/inputdata/atm/cam2/hrtopo/topo.nc cami_0000-09-01_64x128_L26_c030507.nc\n",
+			"definesurf -t /fs/cgd/csm/inputdata/atm/cam2/hrtopo/topo-usgs-10min.nc cami_0000-09-01_64x128_L26_c030507.nc\n",
+			"definesurf -t /fs/cgd/csm/inputdata/atm/cam2/hrtopo/topo10min.merged_c030506.nc cami_0000-09-01_64x128_L26_c030507.nc\n",
+			"definesurf -t /fs/cgd/csm/inputdata/atm/cam2/hrtopo/topo10min.merged_c030506.nc -l cami_0000-09-01_64x128_L26_c030624.nc.new" ;
+		:make_ross = "true" ;
+}

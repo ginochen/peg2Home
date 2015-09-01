@@ -1,0 +1,10 @@
+***** Version - 12072012 *****
+
+***** <!-- "IOP: TWP-ICE 2006 (17 Jan 2006 - 12 Feb 2006)" --> *****
+
+Issuing command to the CICE configure utility:
+  /glade/p/work/ginochen/cesm1_3_beta07/models/ice/cice/bld/configure -hgrid 64x128 -cice_mode prescribed -ntr_aero 0 -nx 1 -ny 1 -bsizex 1 -bsizey 1 -maxblocks 1 -decomptype 'cartesian' -cache config_cache_cice.xml -cachedir /glade/scratch/ginochen/SCAM/scam5_cam_twp06ctrl_1timestep3/scam5_cam_twp06ctrl_1timestep3_bld_L30_none
+CICE configure done.
+
+ -- Compile
+
