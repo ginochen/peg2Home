@@ -1,4 +1,4 @@
-;IOP variables for CAM, from Ikuan's input iop file 
+;IOP variables for CAM from SAM
 ;CAM Input: SAM Output
 ;ps: Ps:long_name = "Surface Pressure" ;
 ;Ptend: dPs/dt ; "Surface Pressure Tendency"
@@ -52,16 +52,7 @@ begin
   in_SAM_2D = addfile(fn_SAM_2D,"r")  
   fn_CAM = "cam_output/ccsm4_0_cfsrr_Fcst.E1.cam2.h1.1993-05-03-00000.nc"
   in_CAM = addfile(fn_CAM,"r")
-  ; **************************************************
-  ;  get list of all files and open as "one big file"
-  ; **************************************************
-  ;  all_files = systemfunc("ls sam_output/gino/OUT_RCE.795162/OUT_3D/*.nc")
-  ;  fall      = addfiles(all_files, "r")   ; note the "s" of addfile
-  ; **************************************************
-  ;  choose how files are combined and read in variable across files
-  ; **************************************************
-  ; ListSetType(fall, "cat")   ;  concatenate or "merge" (default)
-  ; T = fall[:]->T
+
 ;************************************************
 ; Int2p Param
 ;************************************************
@@ -71,8 +62,9 @@ begin
   hyam = in_CAM->hyam                               ; get a coefficiants
   hybm = in_CAM->hybm                               ; get b coefficiants
 
-; type of interpolation: 1 = linear, 2 = log, -1 = linear interp and extrap 
   interp = -1 
+; type of interpolation: 1 = linear, 2 = log, -1 = linear interp/extrap 
+
 ; dsizes = dimsizes(T)
 ; nt = dsizes(0) - 1 
 ; ny = dsizes(2) - 1
@@ -85,18 +77,20 @@ begin
   tg = 300                                         ; "Ground Temperature", find sst in 64_RCE_dynOcnRad.524184.out
   tsair = tg                                       ; "Surface Air Temperature"
 
+;******************************
 ; Dry Static Energy parameters
+;******************************
   cp    = 1004                                     ; dry air heat capacity J kg-1 K-1
   g     = 9.80665                        
   R     = 287.                                     ; Dry air const J kg-1 K-1
 
 ;************************************************
-; input variables
+; Input variables
 ;************************************************
 
-; Capitalized SAM Variables
+; SAM Variables (Capitalized)
 
-; Coordinates (time, z, y, x) with only one time sample
+; Specify Coordinate Indices (Coarse-grained)
   ilat    = (/ 0, 1, 2 /)
   ilon    = (/ 0, 1, 2 /)
   it      = 0
@@ -165,7 +159,7 @@ begin
 ;   *****************************************************************************
     do while(iz.le.nz)
       p(nz-iz) = hyam(iz)*p0mb + hybm(iz)*ps        ; SCAM hybrid level associated pressure 
-      ;S_3D(iz,:,:) = T_3D(iz,:,:) + g*Z(iz)/cp      ; Dry Static energy per unit c_p, S = T + gz/c_p 
+;      S_3D(iz,:,:) = T_3D(iz,:,:) + g*Z(iz)/cp      ; Dry Static energy per unit c_p, S = T + gz/c_p 
       iz = iz + 1 ; 
     end do
     dp(0) = ps - p(0)
