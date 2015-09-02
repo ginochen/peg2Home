@@ -63,7 +63,7 @@ begin
   ; ListSetType(fall, "cat")   ;  concatenate or "merge" (default)
   ; T = fall[:]->T
 ;************************************************
-; define other arguments required by int2p
+; Int2p Param
 ;************************************************
 ; CAM hybrid coeff
   phis = 0                     
