@@ -15,15 +15,15 @@ begin
 ;************************************************
 ; file handling
 ;************************************************
-  fn_SAM_3D = "sam_output/gino/OUT_RCE.795162/OUT_3D/RCE_64x64x64_ctl_64_0000000120.nc"
-  fn_SAM_2D = "sam_output/gino/OUT_RCE.795162/OUT_2D/RCE_64x64x64_ctl_64.2Dcom_1.nc"
+  fn_SAM_3D = "/nethome/gchen/sam_cam_data/sam_output/gino/OUT_RCE.795162/OUT_3D/RCE_64x64x64_ctl_64_0000000120.nc"
+  fn_SAM_2D = "/nethome/gchen/sam_cam_data/sam_output/gino/OUT_RCE.795162/OUT_2D/RCE_64x64x64_ctl_64.2Dcom_1.nc"
   fn_CAMiop = "/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc" ; need only the lat lon 
-  fn_CAM    = "/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_48x96_L26_c040420.nc"
+  fn_CAM    = "/nethome/gchen/SCAM/cami_0000-01-01_128x256_L26_c030918.nc"
 
   in_SAM_3D = addfile(fn_SAM_3D,"r")                         ; open netcdf file
   in_SAM_2D = addfile(fn_SAM_2D,"r")  
   in_CAMiop = addfile(fn_CAMiop,"r") 
-  in_CAM    = addfile(fn_CAM,"r")
+  in_CAM    = addfile(fn_CAM,"w")
 
 ;********************
 ; SCAM dimension
@@ -77,8 +77,8 @@ begin
   it      = 0
 
 ; Save 3D variables to calculate divergence
-  U_3D    = in_SAM_3D-> U(it,:,ilat,ilon)
-  V_3D    = in_SAM_3D-> V(it,:,ilat,ilon)
+  U_3D    = in_SAM_3D->U(it,:,ilat,ilon)
+  V_3D    = in_SAM_3D->V(it,:,ilat,ilon)
   T_3D    = in_SAM_3D->TABS(it,:,ilat,ilon)              ; variable to interp 
   PP_3D   = in_SAM_3D->PP(it,:,ilat,ilon)                ; pressure perturbation
   Q_3D    = in_SAM_3D->QV(it,:,ilat,ilon)                ; water vapor mixing ratio
@@ -96,8 +96,9 @@ begin
 ; Coordinates (time, y, x) with a time-series
   ps_2D   = in_SAM_2D->PSFC(it,:,:)
   ps      = dim_avg(dim_avg(ps_2D(ilat,ilon)))
-  ts_2D   = in_SAM_2D->TS(it,:,:)
-  ts      = dim_avg(dim_avg(ts_2D(ilat,ilon)))
+  ts      = 282
+;  ts_2D   = in_SAM_2D->SST(it,:,:)
+;  ts      = dim_avg(dim_avg(ts_2D(ilat,ilon)))
 
 ;*************************************************************
 ; interpolate variables from SAM to CAM in pressure coordinate
@@ -138,37 +139,39 @@ begin
 
 
   
-;function outputVar(lev,lat,lon,time)
-  ntim  = dimsizes(time)                 ; get dimension sizes  
-  nlev  = dimsizes(lev)                                               
-  nlat  = dimsizes(lat)  
-  nlon  = dimsizes(lon)      
     ;===================================================================
-    ; Substitute the Column into a zero valued 3D grid (at the lat-lon of IOP)
     ; output only the data values since the dimensionality and such have
     ; been predefined. The "(/", "/)" syntax tells NCL to only output the
     ; data values to the predefined locations on the file.
     ;====================================================================
-  latlon = new((/dimsizes(lat),dimsizes(lon)/),double)
-  ; generate lat2d lon2d
-  PS_CAM   = in_CAM-> PS
-  T_CAM    = in_CAM-> T
-  TS_CAM   = in_CAM-> TS
-  Q_CAM    = in_CAM-> Q
-  CWAT_CAM = in_CAM-> CWAT
-  U_CAM    = in_CAM-> U
-  V_CAM    = in_CAM-> V
+  ilatiop = minind(abs(latiop - lat)) ; get the lat index for iop in cami.nc
+  iloniop = minind(abs(loniop - lon))
+
+  PS_CAM   = in_CAM->PS
+  T_CAM    = in_CAM->T
+  TS_CAM   = in_CAM->TS
+  Q_CAM    = in_CAM->Q
+  CWAT_CAM = in_CAM->CWAT
+  U_CAM    = in_CAM->U
+  V_CAM    = in_CAM->V
   
-       in_CAM->t      = (/t/)
-       in_CAM->q      = (/q/)
-       in_CAM->u      = (/u/)
-       in_CAM->v      = (/v/)
-       in_CAM->phis   = (/phis/)
-       in_CAM->p      = (/p/)
-       in_CAM->ps     = (/ps/)
-       in_CAM->ts     = (/ts/)
-       in_CAM->cwat   = (/cwat/)
-       in_CAM->ts     = (/ts/)
-    
+  PS_CAM(it,ilatiop,iloniop)     = ps  ; substitute the iop column in cami.nc
+  TS_CAM(it,ilatiop,iloniop)     = ts  
+  T_CAM(it,ilatiop,:,iloniop)    = (/t/)       
+  Q_CAM(it,ilatiop,:,iloniop)    = (/q/)   
+  CWAT_CAM(it,ilatiop,:,iloniop) = (/cwat/)
+  U_CAM(it,ilatiop,:,iloniop)    = (/u/)
+  V_CAM(it,ilatiop,:,iloniop)    = (/v/)
+
+  in_CAM->PS      = (/PS_CAM/)
+  in_CAM->T       = (/T_CAM/)
+  in_CAM->TS      = (/TS_CAM/)
+  in_CAM->Q       = (/Q_CAM/)
+  in_CAM->CWAT    = (/CWAT_CAM/)
+  in_CAM->U       = (/U_CAM/)
+  in_CAM->V       = (/V_CAM/)
+  in_CAM->ts      = (/ts/)
+  in_CAM->cwat    = (/cwat/)
+     
 
 end

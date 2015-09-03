@@ -1,86 +1,3 @@
-git add Makefile 
-git commit
-git commit -a
-git status
-git log
-git remote
-git remote -v
-exit
-ls
-cdsam
-ls
-cd *M2005
-ls
-vim .git/config 
-cd .git/
-cd ..
-ls
-cd *M2005
-git push https://github.com/ginochen/gino.git
-git status
-
-git push origin master
-git init
-git branch
-git status
-git add .
-ls
-git status
-ls
-git push -u origin master
-git branch
-git 
-git push origin master
-git push -u origin master
-git push origin master
-git remote add origin https://github.com/ginochen/SAM.git
-vim .git/config 
-git push -u origin master
-git push
-vim .git/config 
-git push
-vim .git/config 
-git push
-vim .git/config
-git push
-vim .git/config
-git push
-vim .git/config
-git push
-git remote add origin git@github.com:ginochen/SAM.git
-git push origin master
-vim .git/config
-git push origin master
-vim .git/config
-echo "# SAM" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:ginochen/SAM.git
-git push -u origin master
-vim .git/config
-git remote set-url origin https://github.com/ginochen/SAM.git
-git push
-git push -u origin master
-git remote set-url origin http://github.com/ginochen/SAM.git
-git push -u origin master
-git remote set-url origin https://github.com/ginochen/SAM.git
-git push -u origin master
-git remote set-url origin ssh://git@github.com/ginochen/SAM.git
-git push -u origin master
-sudo git push -u origin master
-exit
-cdsam
-cd *M20205
-*M2005
-cd *M2005
-sudo vim .git/config
-exit
-ls
-cdsam
-ls
-cd *M2005
-ls
 cd ..
 ls
 rm -fr UTIL
@@ -998,3 +915,86 @@ ls
 vim coarse_grain.ncl 
 vim main.sh
 vim coarse_grain.ncl 
+ls
+cdscam
+ls
+vim var_cami.txt 
+vim var_scami.txt 
+vim var_cami.txt 
+vim var_TOGAII_4scam.txt 
+vim var_cami_0000-09-01_48x96_L26_c040420.txt 
+ls /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/
+ls /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam
+ls /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam/iop
+ncl
+cdscam
+ls
+mkdir SRC
+mv coarse_grain.ncl SRC
+mv test.ncl SRC
+ls
+mv gino.rce_iop.ncl SRC/
+mv ikuan.rce_iop.ncl SRC
+cd SRC
+ls
+vim test.ncl 
+ls
+vim -o coarse_grain.ncl test.ncl 
+ls
+cd ..
+ls
+gitcommit
+git add SRC
+gitcommit
+cd SRC
+ls
+vim test.ncl 
+mv test.ncl sam2camiop.ncl
+cp sam2camiop.ncl sam2camic.ncl
+git add sam2cami*
+gitcommit
+gitpush
+ls
+vim sam2camic.ncl
+ls
+vim coarse_grain.ncl 
+vim sam2camic.ncl 
+vim  -o sam2camic.ncl coarse_grain.ncl 
+vim sam2camic.ncl 
+ls
+cd ..
+ls
+ls inputdata/
+ncdump -h inputdata/scam/iop/TOGAII_4scam.nc 
+ncdump -v lon inputdata/scam/iop/TOGAII_4scam.nc 
+ncdump -v lat inputdata/scam/iop/TOGAII_4scam.nc 
+vim SRC/sam2camic.ncl 
+ls
+cd inputdata/scam/iop/TOGAII_4scam.nc 
+cd inputdata/scam/iop/
+pwd
+cd -
+vim SRC/sam2camic.ncl 
+cd -
+ls
+cd -
+vim SRC/sam2camic.ncl 
+ln -sf /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_48x96_L26_c040420.nc
+ls
+rm cami_0000-09-01_48x96_L26_c040420.nc 
+cp /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_48x96_L26_c040420.nc .
+ls
+pwd
+vim SRC/sam2camic.ncl 
+cdscam
+ls
+ncl
+ls
+gitstatus
+git status
+gitcommit
+gitpush
+ls
+cdscam
+ls
+vim SRC/sam2camic.ncl 
