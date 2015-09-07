@@ -11,29 +11,31 @@ echo "***** Version - $VERSION *****"
 ### Set vars needed for this script code dir, case, data dir, mods, wrkdir
 #########################################################################
 
-set CAM_ROOT  = /glade/p/work/ginochen/cesm1_3_beta07 #/glade/p/work/ihu/CESM/cesm1_3_beta07   #/glade/p/work/ginochen/spcam2_0-cesm1_1_1/
-set CSMDATA   = /glade/p/cesmdata/cseg/inputdata
+set CAM_ROOT  = /nethome/gchen/CESM/cesm#/models/atm/cam/bld/namelist_files/use_cases/ #/glade/p/work/ihu/CESM/cesm1_3_beta07   #/glade/p/work/ginochen/spcam2_0-cesm1_1_1/
+set CSMDATA   = /nethome/gchen/SCAM/inputdata#/nethome/bkirtman/ccsm_inputdata/inputdata
 set USR_SRC =  # Test mods dir.
 
 ###set IOP_CASES_TO_RUN = 'arm95 arm97 gateIII mpace sparticus togaII twp06'
-set IOP_CASES_TO_RUN = 'twp06' ## 'gateIII' ## 'twp06' ## 'togaII' ## 'arm97'
+set IOP_CASES_TO_RUN = 'togaII' ## 'gateIII' ## 'twp06' ## 'togaII' ## 'arm97'
 
 ###set CAM_TIMESTEPS_TO_RUN = '60 300 600 900 1200'
 set CAM_TIMESTEPS_TO_RUN = '60'
 
 ### set CAM_LEVELS  # options are 26,27,30,60,90,120,150,180,210,240
                     # you must have initial condition files for number of levels
-set CAM_LEVELS_TO_RUN = 30 
-set CASE = scam5_cam_twp06ctrl_1timestep9 ## scam5_gateIII_001 ## scam5_twp06_005 ## scam5_togaII_001 ## scam5_arm97_004
-set WRKDIR = /glade/scratch/$USER/SCAM && if (! -e  $WRKDIR) mkdir -p $WRKDIR
+set CAM_LEVELS_TO_RUN = 26 
+
+set CASE = scam5_cam_togaII_1timestep9 ## scam5_gateIII_001 ## scam5_twp06_005 ## scam5_togaII_001 ## scam5_arm97_004
+
+set WRKDIR = /nethome/gchen/SCAM && if (! -e  $WRKDIR) mkdir -p $WRKDIR
 
 #########################################################################
 ### Select compiler+libraries env vars and set paths depending on machine.
 #########################################################################
 
-set FC_DIR = /glade/apps/opt/modulefiles/ys/cmpwrappers
-set USER_FC = ifort ##pgf95
-set NCHOME = /glade/u/apps/opt/netcdf/4.3.2/intel/12.1.5 ##/glade/apps/opt/netcdf/4.2/pgi/12.5
+set FC_DIR=/share/opt/intel/composer_xe_2013.2.146/compiler/
+set USER_FC=ifort
+set NCHOME=/share/apps/netcdf/4.2.1.1/intel/13.0.2.146/
 set DBUG = "-debug"
 
 #########################################################################
@@ -42,11 +44,13 @@ set DBUG = "-debug"
 
 setenv INC_NETCDF ${NCHOME}/include
 setenv LIB_NETCDF ${NCHOME}/lib
-setenv NCARG_ROOT /contrib/ncarg
+setenv NCARG_ROOT /share/apps/ncl/6.1.2/include/ncarg#/contrib/ncarg
 setenv PATH ${NCHOME}/bin:${FC_DIR}/bin:${NCARG_ROOT}/bin:${PATH}
 setenv LD_LIBRARY_PATH ${FC_DIR}/lib:${LIB_NETCDF}:${LD_LIBRARY_PATH}
 
 alias MATH 'set \!:1 = `echo "\!:3-$" | bc -l`'  # do not modify this
+
+set runtypes="test"
 
 #########################################################################
 # NOTE: Below, set iopname, levarr, tarray.  can be more than one values, if so will loop 
@@ -65,8 +69,8 @@ set EXPNAME={$CASE}_{$iopname}_L{$levarr}_T{$tarray}
 ### cases are so short that the aerosols do not have time to spin up.
 
 if ($iopname == 'arm95' ||$iopname == 'arm97' ||$iopname == 'mpace' ||$iopname == 'twp06' ||$iopname == 'sparticus' ||$iopname == 'togaII' ||$iopname == 'gateIII' ||$iopname == 'IOPCASE') then
-##  set aero_mode = 'trop_mam3'
-  set aero_mode = 'none'
+  set aero_mode = 'trop_mam3'
+#  set aero_mode = 'none'
 else
   set aero_mode = 'none'
 endif
@@ -100,8 +104,8 @@ $CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eu
 echo ""
 echo " -- Compile"
 echo ""
-###gmake -j >&! MAKE.out || echo "ERROR: Compile failed for' bld_${levarr}_${aero_mode} - exiting run_scam" && exit 1
-gmake -j > MAKE.out || echo "ERROR: Compile failed for' bld_${levarr}_${aero_mode} - exiting run_scam" && exit 1
+gmake -j >&! MAKE.out || echo "ERROR: Compile failed for' bld_${levarr}_${aero_mode} - exiting run_scam" && exit 1
+#gmake -j > MAKE.out || echo "ERROR: Compile failed for' bld_${levarr}_${aero_mode} - exiting run_scam" && exit 1
 
 #--------------------------
 ## Build the namelist with extra fields needed for scam diagnostics
@@ -123,15 +127,24 @@ cat <<EOF >! tmp_namelistfile
                            'ZMICUD','ZMICUU','ZMICVD','ZMICVU','ZMMD','ZMMTT','ZMMTU','ZMMTV','ZMMU','ZMNTPRPD','ZMNTSNPD','ZMUPGD','ZMUPGU',
                            'ZMVPGD','ZMVPGU'
 /
-&seq_timemgr_inparm
-    stop_n               = 1,
-    stop_option          = 'nsteps'
-/
 &cam_inparm
-    iopfile              = '/glade/scratch/ginochen/SCAM/rce_iop_twp06_mean_ctrl.nc'
-    ncdata               = '/glade/scratch/ginochen/SCAM/sam_test.nc'
+    iopfile = '/nethome/gchen/SCAM/inputdata/atm/cam/scam/iop/TOGAII_4scam.nc',
+    ncdata = '/nethome/gchen/SCAM/inputdata/atm/cam/inic/gaus/cami_0000-01-01_64x128_L30_c090102.nc'   
+/
+&seq_timemgr_inparm
+    stop_option          = 'nsteps'
+    stop_n               = 1,
 /
 EOF
+#&cam_inparm
+#    iopfile = '/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc'
+#    ncdata  = '/nethome/gchen/SCAM/Ocn1Atm10.cam2.9.r.0126-01-01-00000.nc'
+#/
+#&cam_inparm
+#    iopfile = '/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc'
+#    ncdata = '/nethome/gchen/SCAM/inputdata/inic/gaus/cami_0000-01-01_64x128_L30_c090102.nc'   
+#/
+    #iopfile              = '/glade/scratch/ginochen/SCAM/rce_iop_twp06_mean_ctrl.nc'
 ### NOT FOUND 'CNVCLD','DQSED','HCME','HEVPA','HFREEZ','HREPART','HSED','PTTEND_RESID','REPARTICE','REPARTLIQ',
 ### cat <<EOF >! tmp_namelistfile
 ### &camexp 

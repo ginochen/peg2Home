@@ -3,6 +3,15 @@
 ; Applies coarse-grained and vert-intrp for SAM outputs
 ; The processed data are substituted with Single Column CAM initial conditions (ocean only)
 ; PS, T, TS, Q, CWAT, U, V
+; CLDICE
+; CLDLIQ
+; CLOUD
+; CONCLD
+; CUSH : Convective Scale Height
+; 
+
+; Q: "Specific humidity"
+; CWAT: "Total Grid box averaged Condensate Amount (liquid + ice)", "kg/kg"
 ; PSFC, TABS, SST, QV/1000, QN/1000, U, V (SAM corresponding)
 ;------------------------------------------------------------------------------
 
@@ -18,7 +27,7 @@ begin
   fn_SAM_3D = "/nethome/gchen/sam_cam_data/sam_output/gino/OUT_RCE.795162/OUT_3D/RCE_64x64x64_ctl_64_0000000120.nc"
   fn_SAM_2D = "/nethome/gchen/sam_cam_data/sam_output/gino/OUT_RCE.795162/OUT_2D/RCE_64x64x64_ctl_64.2Dcom_1.nc"
   fn_CAMiop = "/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc" ; need only the lat lon 
-  fn_CAM    = "/nethome/gchen/SCAM/cami_0000-01-01_128x256_L26_c030918.nc"
+  fn_CAM    = "/nethome/gchen/SCAM/cami_0000-01-01_64x128_L30_c090102.nc"
 
   in_SAM_3D = addfile(fn_SAM_3D,"r")                         ; open netcdf file
   in_SAM_2D = addfile(fn_SAM_2D,"r")  
@@ -149,7 +158,7 @@ begin
 
   PS_CAM   = in_CAM->PS
   T_CAM    = in_CAM->T
-  TS_CAM   = in_CAM->TS
+  TS_CAM   = in_CAM->TSOCN              ; TSOCN for TOGAII, TS for ARM
   Q_CAM    = in_CAM->Q
   CWAT_CAM = in_CAM->CWAT
   U_CAM    = in_CAM->U
@@ -165,7 +174,7 @@ begin
 
   in_CAM->PS      = (/PS_CAM/)
   in_CAM->T       = (/T_CAM/)
-  in_CAM->TS      = (/TS_CAM/)
+  in_CAM->TSOCN   = (/TS_CAM/)         ; TSOCN for TOGAII, TS for ARM
   in_CAM->Q       = (/Q_CAM/)
   in_CAM->CWAT    = (/CWAT_CAM/)
   in_CAM->U       = (/U_CAM/)

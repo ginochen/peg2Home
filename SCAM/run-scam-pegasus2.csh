@@ -127,14 +127,17 @@ cat <<EOF >! tmp_namelistfile
                           'LIQCLDF','ICECLDF', 'ICWMRST', 'ICIMRST', 'EFFLIQ', 'EFFICE','ADRAIN','ADSNOW'
 /
 &cam_inparm
-    iopfile = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam/iop/arm0795v1.2.nc',
-    ncdata = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L26_c030918.nc'
+    iopfile = '/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc'
+    ncdata = 'Ocn1Atm10.cam2.9.r.0126-01-01-00000.nc'
 /
 &seq_timemgr_inparm
     stop_option = 'nsteps',
     stop_n = 1
 /
 EOF
+    #iopfile = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam/iop/arm0795v1.2.nc',
+    #ncdata = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L26_c030918.nc'
+    #ncdata = 'cami_0000-01-01_64x128_L30_c090102.nc'
 
 
 $CAM_ROOT/models/atm/cam/bld/build-namelist -s -runtype startup -infile tmp_namelistfile -use_case scam_${iopname} -csmdata $CSMDATA \

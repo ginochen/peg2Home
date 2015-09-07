@@ -22,7 +22,6 @@ fi
 #alias autoconf='/nethome/gchen/share/autoconf/bin/autoconf'
 #alias autoheader='/nethome/gchen/share/autoconf/bin/autoheader'
 #alias autom4te='/nethome/gchen/share/autoconf/bin/autom4te'
-alias hhsu='cd hhsu'
 alias bhistl='bhist -l'
 alias bjobsl='bjobs -l' # CPU, Memories, etc.
 alias bpeekf='bpeek -f'
@@ -32,6 +31,8 @@ alias grep='grep --color=always -n -r'
 #alias quick='module load intel;module load netcdf;module load ncview'
 alias untar='tar xvf' # add 'z' for gzip file
 alias ystone='ssh -Y -l ginochen yellowstone.ucar.edu'
+alias mkdirp='mkdir -p' # make a full tree path
+alias hhsu='cd hhsu'
 alias cdwork1='cd /bkirtman/gchen'
 alias cdccsmdata='cd /projects/rsmas/kirtman/ccsm6.0/01ic/atm.01/daily/E1/'
 alias cdcesm='cd /nethome/gchen/CESM/cesm'
@@ -40,6 +41,7 @@ alias cdsam='cd /projects/rsmas/kirtman/gchen/SAM/'
 alias cdsamo='cd /projects/rsmas/kirtman/gchen/SAM/OUTPUTS'
 alias cdscam='cd /nethome/gchen/SCAM'
 alias cdscratch='cd /projects/rsmas/kirtman/gchen/'
+alias cdwrf='cd /projects/rsmas/kirtman/gchen/WRF'
 alias ls='ls --color=auto -F'
 alias view='gnome-open' # opens website in x11
 alias gitpush='git push -u origin master'
