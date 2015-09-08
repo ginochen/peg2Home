@@ -27,9 +27,9 @@ set CAM_TIMESTEPS_TO_RUN = '60'
                     # you must have initial condition files for number of levels
 set CAM_LEVELS_TO_RUN = 26
 
-set CASE = cam5_3_02
+set CASE = scam5_cam_arm97_1timestep1
 
-set WRKDIR    = /nethome/$USER/SCAM/scratch && if (! -e  $WRKDIR) mkdir -p $WRKDIR
+set WRKDIR    = /nethome/$USER/SCAM/ && if (! -e  $WRKDIR) mkdir -p $WRKDIR
 
 #########################################################################
 ### Select compiler+libraries env vars and set paths depending on machine.
@@ -96,7 +96,7 @@ echo ""
 ## Configure for building
 ##------------------------------------------------
    
-##$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -cppdefs -DDISABLE_TIMERS -scam -usr_src $SCAM_MODS -fc $USER_FC $DBUG -ldflags "-llapack -lblas -Mnobounds" #-cice_nx 1 -cice_ny 1 #-microphys mg1.5
+$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -cppdefs -DDISABLE_TIMERS -scam -usr_src $SCAM_MODS -fc $USER_FC $DBUG -ldflags "-llapack -lblas -Mnobounds" #-cice_nx 1 -cice_ny 1 #-microphys mg1.5
 
 ##--------------------------
 ## compile
@@ -105,7 +105,8 @@ echo ""
 echo ""
 echo " -- Compile"
 echo ""
-##gmake -j >&! MAKE.out || echo "ERROR: Compile failed for' bld_${levarr}_${aero_mode} - exiting run_scam" && exit 1
+
+gmake -j >&! MAKE.out || echo "ERROR: Compile failed for' bld_${levarr}_${aero_mode} - exiting run_scam" && exit 1
 
 #--------------------------
 ## Build the namelist with extra fields needed for scam diagnostics
@@ -127,14 +128,16 @@ cat <<EOF >! tmp_namelistfile
                           'LIQCLDF','ICECLDF', 'ICWMRST', 'ICIMRST', 'EFFLIQ', 'EFFICE','ADRAIN','ADSNOW'
 /
 &cam_inparm
-    iopfile = '/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc'
-    ncdata = 'Ocn1Atm10.cam2.9.r.0126-01-01-00000.nc'
+    iopfile = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam/iop/arm0795v1.2.nc',
+    ncdata = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L26_c030918.nc'
 /
 &seq_timemgr_inparm
     stop_option = 'nsteps',
     stop_n = 1
 /
 EOF
+    #iopfile = '/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc'
+    #ncdata = 'Ocn1Atm10.cam2.9.r.0126-01-01-00000.nc'
     #iopfile = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam/iop/arm0795v1.2.nc',
     #ncdata = '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/inic/gaus/cami_0000-09-01_64x128_L26_c030918.nc'
     #ncdata = 'cami_0000-01-01_64x128_L30_c090102.nc'

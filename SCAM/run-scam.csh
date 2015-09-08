@@ -16,16 +16,17 @@ set CSMDATA   = /nethome/gchen/SCAM/inputdata#/nethome/bkirtman/ccsm_inputdata/i
 set USR_SRC =  # Test mods dir.
 
 ###set IOP_CASES_TO_RUN = 'arm95 arm97 gateIII mpace sparticus togaII twp06'
-set IOP_CASES_TO_RUN = 'togaII' ## 'gateIII' ## 'twp06' ## 'togaII' ## 'arm97'
+set IOP_CASES_TO_RUN = 'twp06' ## 'gateIII' ## 'twp06' ## 'togaII' ## 'arm97'
 
 ###set CAM_TIMESTEPS_TO_RUN = '60 300 600 900 1200'
 set CAM_TIMESTEPS_TO_RUN = '60'
 
 ### set CAM_LEVELS  # options are 26,27,30,60,90,120,150,180,210,240
                     # you must have initial condition files for number of levels
-set CAM_LEVELS_TO_RUN = 26 
+set CAM_LEVELS_TO_RUN = 30 
 
-set CASE = scam5_cam_togaII_1timestep9 ## scam5_gateIII_001 ## scam5_twp06_005 ## scam5_togaII_001 ## scam5_arm97_004
+#set CASE = scam5_cam_togaII_1timestep15 ## scam5_gateIII_001 ## scam5_twp06_005 ## scam5_togaII_001 ## scam5_arm97_004
+set CASE = scam5_cam_twp06_1timestep16 ## scam5_gateIII_001 ## scam5_twp06_005 ## scam5_togaII_001 ## scam5_arm97_004
 
 set WRKDIR = /nethome/gchen/SCAM && if (! -e  $WRKDIR) mkdir -p $WRKDIR
 
@@ -44,7 +45,7 @@ set DBUG = "-debug"
 
 setenv INC_NETCDF ${NCHOME}/include
 setenv LIB_NETCDF ${NCHOME}/lib
-setenv NCARG_ROOT /share/apps/ncl/6.1.2/include/ncarg#/contrib/ncarg
+setenv NCARG_ROOT /share/apps/ncl/6.1.2
 setenv PATH ${NCHOME}/bin:${FC_DIR}/bin:${NCARG_ROOT}/bin:${PATH}
 setenv LD_LIBRARY_PATH ${FC_DIR}/lib:${LIB_NETCDF}:${LD_LIBRARY_PATH}
 
@@ -69,8 +70,8 @@ set EXPNAME={$CASE}_{$iopname}_L{$levarr}_T{$tarray}
 ### cases are so short that the aerosols do not have time to spin up.
 
 if ($iopname == 'arm95' ||$iopname == 'arm97' ||$iopname == 'mpace' ||$iopname == 'twp06' ||$iopname == 'sparticus' ||$iopname == 'togaII' ||$iopname == 'gateIII' ||$iopname == 'IOPCASE') then
-  set aero_mode = 'trop_mam3'
-#  set aero_mode = 'none'
+#  set aero_mode = 'trop_mam3'
+  set aero_mode = 'none'
 else
   set aero_mode = 'none'
 endif
@@ -92,11 +93,14 @@ echo ""
 ## Configure for building
 ##------------------------------------------------
    
-##$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -cppdefs -DDISABLE_TIMERS -scam -usr_src $SCAM_MODS -fc $USER_FC $DBUG -ldflags "-llapack -lblas -Mnobounds" -cice_nx 1 -cice_ny 1 -microphys mg1.5
+#$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -cppdefs -DDISABLE_TIMERS -scam -usr_src $SCAM_MODS -fc $USER_FC $DBUG -ldflags "-llapack -lblas -Mnobounds" #-comp_intf mct -ice none -ocn docn# -cice_nx 1 -cice_ny 1 -microphys mg1.5
+
+##$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -cppdefs -DDISABLE_TIMERS -scam -usr_src $SCAM_MODS -fc $USER_FC $DBUG -ldflags "-llapack -lblas -Mnobounds" # -cice_nx 1 -cice_ny 1 -microphys mg1.5
 ##$CAM_ROOT/models/atm/cam/bld/configure -s -ccsm_seq -ice none -ocn docn -comp_intf mct -scam -nosmp -nospmd -dyn eul -res 64x128 -phys cam5 -dyn eul -scam
 
-$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -scam -ocn dom -comp_intf mct -phys cam5 -fc $USER_FC
+#$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -scam -ocn dom -comp_intf mct -phys cam5 -fc $USER_FC -usr_src $SCAM_MODS
 
+$CAM_ROOT/models/atm/cam/bld/configure -s -chem $aero_mode -nlev $levarr -dyn eul -res 64x128 -nospmd -nosmp -scam -ocn dom -comp_intf mct -phys cam5 -fc $USER_FC 
 ##--------------------------
 ## compile
 ##--------------------------
@@ -128,7 +132,7 @@ cat <<EOF >! tmp_namelistfile
                            'ZMVPGD','ZMVPGU'
 /
 &cam_inparm
-    iopfile = '/nethome/gchen/SCAM/inputdata/atm/cam/scam/iop/TOGAII_4scam.nc',
+    iopfile = '/nethome/gchen/SCAM/inputdata/atm/cam/scam/iop/TWP06_4scam.nc',
     ncdata = '/nethome/gchen/SCAM/inputdata/atm/cam/inic/gaus/cami_0000-01-01_64x128_L30_c090102.nc'   
 /
 &seq_timemgr_inparm
