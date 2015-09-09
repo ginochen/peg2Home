@@ -1,228 +1,3 @@
-ls
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata inputdata
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/* inputdata
-ls
-cd inputdata
-ls
-cd ..
-ls
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata inputdata
-ls
-vim run-scam.csh
-vim  scam5_cam_togaII_1timestep5/scam5_cam_togaII_1timestep5_togaII_L30_T60/atm_in
-ls
-cd inputdata
-cd atm/
-cd cam
-ls
-cd physprops/
-ls
-scp ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910.nc .
-vim  scam5_cam_togaII_1timestep5/scam5_cam_togaII_1timestep5_togaII_L30_T60/atm_in
-vim  ~/SCAM/scam5_cam_togaII_1timestep5/scam5_cam_togaII_1timestep5_togaII_L30_T60/atm_in
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-vim run-scam.csh
-./run-scam.csh
-vim run-scam.csh
-vim  scam5_cam_togaII_1timestep5/scam5_cam_togaII_1timestep5_togaII_L30_T60/atm_in
-ln -sf  scam5_cam_togaII_1timestep5/scam5_cam_togaII_1timestep5_togaII_L30_T60/atm_in
-vim atm_in 
-vim run-scam.csh
-ls
-vim run-scam.csh
-./run-scam.csh
-vim run-scam.csh
-./run-scam.csh
-vim /nethome/gchen/CESM/cesm/models/atm/cam/bld/build-namelist
-./run-scam.csh
-vim run-scam.csh
-ls /nethome/gchen/SCAM/inputdata/inic/gaus/cami_0000-01-01_64x128_L30_c090102.nc
-vim run-scam.csh
-./run-scam.csh
-vim run-scam.csh
-./run-scam.csh
-vim run-scam.csh
-./run-scam.csh
-vim run-scam.csh
-./run-scam.csh
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/atm_in
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/scam_output.txt 
-vim run-scam.csh
-./run-scam.csh
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/scam_output.txt 
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/ocn_in
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/lnd_in
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/ice_in 
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/drv_in
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/rof_in
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/drv_flds_in
-./run-scam.csh
-vim run-scam.csh 
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/ocn_in
-ls /nethome/gchen/SCAM/inputdata/atm/cam/sst/sst_HadOIBl_bc_64x128_clim_c050526.nc
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/ocn_in
-ls /nethome/gchen/SCAM/inputdata/atm/cam/ocnfrac/domain.camocn.64x128_USGS_070807.nc
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/ocn_in
-vim /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/lnd_in
-ls /nethome/gchen/SCAM/inputdata/share/domains/domain.clm/domain.lnd.T42_USGS.111004.nc
-more /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/lnd_in
-ls /nethome/gchen/SCAM/inputdata/lnd/clm2/pftdata/pft-physiology.clm40.c130424.nc'
-ls /nethome/gchen/SCAM/inputdata/lnd/clm2/pftdata/pft-physiology.clm40.c130424.nc
-ls /nethome/gchen/SCAM/inputdata/lnd/clm2/snicardata/snicar_drdt_bst_fit_60_c070416.nc
-ls /nethome/gchen/SCAM/inputdata/lnd/clm2/snicardata/snicar_optics_5bnd_c090915.nc
-ls /nethome/gchen/SCAM/inputdata/lnd/clm2/surfdata/surfdata_64x128_simyr2000_c090928.nc
-more /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/ice_in
-grep .nc /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/ice_in
-ls /nethome/gchen/SCAM/inputdata/atm/cam/ocnfrac/domain.camocn.64x128_USGS_070807.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/sst/sst_HadOIBl_bc_64x128_clim_c050526.nc
-grep .nc /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/drv_in
-grep .nc /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/drv_flds_in
-grep .nc /nethome/gchen/SCAM/scam5_cam_togaII_1timestep6/scam5_cam_togaII_1timestep6_togaII_L30_T60/atm_in
-ls /nethome/gchen/SCAM/inputdata/atm/cam/topo/USGS-gtopo30_64x128_c050520.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/scam/iop/TOGAII_4scam.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/inic/gaus/cami_0000-01-01_64x128_L30_c090102.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/iceoptics_c080917.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/F_nwvl200_mu20_lam50_res64_t298_c080428.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/solar/solar_ave_sc19-sc23.c090810.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/chem/trop_mozart/ub/clim_p_trop.nc
-ls
-./run-scam.csh
-ls
-vim run-scam.csh
-./run-scam.csh
-vim run-scam.csh
-vim scam_togaII.xml 
-exit
-ls
-cd SCAM/
-ls
-ncdump -h inputdata/scam/iop/TWP06_4scam.nc 
-ls
-ls -lt
-cd scam5_twp06_camiop/
-ls
-cd *L26_no
-cd *L26_none
-ls
-cd ..
-ls
-cd scam5_twp06_camiop_twp06_L30_T1200/
-ls
-cdscam
-ls
-vim run-scam-pegasus2.csh 
-which ifort
-vim run-scam-pegasus2.csh 
-ls /share/opt/intel/composer_xe_2013.2.146/compiler/
-ls
-vim scam5_cam_twp06ctrl_1timestep9/*none
-ls -f scam5_cam_twp06ctrl_1timestep9/scam5_cam_twp06ctrl_1timestep9_bld_L30_none/
-ls -F scam5_cam_twp06ctrl_1timestep9/scam5_cam_twp06ctrl_1timestep9_bld_L30_none/
-vim scam5_cam_twp06ctrl_1timestep9/scam5_cam_twp06ctrl_1timestep9_twp06_L30_T60/scam_output.txt 
-cd scam5_cam_twp06ctrl_1timestep9/scam5_cam_twp06ctrl_1timestep9_twp06_L30_T60/
-ls
-./cam
-cd ..
-l
-cd ..
-ls
-vim README 
-vim scam.out.txt
-vim scam.out2.txt 
-vim scam.out1.txt 
-vim scam_ihu_output.txt 
-vim run-scam.csh 
-
-vim -o run-scam.csh run-scam-pegasus2.csh 
-cdsam
-ls
-cd *ARM0003
-ls
-vim gobsub.job 
-vim Makefile 
-ls /share/opt/intel/composer_xe_2013.2.146/compiler/
-ls /share/opt/intel/impi/4.1.1.036/intel64/
-ls /share/opt/intel/impi/4.1.1.036/intel64/bin
-cdscam
-ls
-vim run-scam.csh
-./run-scam.csh
-ls
-cd inputdata/
-ls
-mkdir atm
-mkdir atm/cam
-mkdir atm/cam/physprops
-ls
-cd ..
-ls
-vim run-scam_ikuan.csh 
-vim run-scam.csh
-ls
-ls inputdata/
-ls /nethome/gchen/SCAM/inputdata/scam/iop/
-ls /nethome/bkirtman/ccsm_inputdata/inputdata
-ls /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/scam/iop/
-mkdir inputdata/atm/cam/chem
-mkdir inputdata/atm/cam/chem/trop_mam
-mkdir inputdata/atm/cam/chem/trop_mam/aero
-cd inputdata/atm/cam/chem/trop_mam/aero
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mam/aero/mam3_1.9x2.5_L30_2000clim_c130319.nc .
-ls '/nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/topo/USGS-gtopo30_64x128_c050520.nc
-ls /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/topo/USGS-gtopo30_64x128_c050520.nc
-cd ..
-pwd
-cd ..
-mkdir topo
-cd topo
-cp /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/topo/USGS-gtopo30_64x128_c050520.nc .
-ls
-cd ..
-ls /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/physprops/
-ls /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910.nc
-ls cam/chem/trop_mam/aero
-ls chem/trop_mam/aero
-mkdir ozone
-cd ozone/
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/ozone/ozone_1.9x2.5_L26_2000clim_c091112.nc .
-cd ..
-cd physprops/
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/iceoptics_c080917.nc .
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/F_nwvl200_mu20_lam50_res64_t298_c080428.nc .
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/sulfate_rrtmg_c080918.nc .
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocpho_rrtmg_c101112.nc .
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/ocphi_rrtmg_c100508.nc .
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/bcpho_rrtmg_c100508.nc .
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/physprops/* .
-cd ..
-ls
-mkdir solar
-cd solar
-cp /nethome/bkirtman/ccsm_inputdata/inputdata/atm/cam/solar/solar_ave_sc19-sc23.c090810.nc .
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/solar/solar_ave_sc19-sc23.c090810.nc .
-cd ..
-ls
-cd chem
-ls
-mkdir trop_mozart
-cd trop_mozart/
-mkdir ub
-cd ub
-rsync -av ginochen@yellowstone.ucar.edu:/glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart/ub/clim_p_trop.nc .
-pwd
-ls /nethome/gchen/SCAM/Ocn1Atm10.cam2.9.r.0126-01-01-00000.nc
-ls
-cd ..
-ls
 cd ..
 ls
 cd -
@@ -998,3 +773,228 @@ ls
 vim run-scam.csh
 ln -sf /nethome/gchen/CESM/cesm/models/atm/cam/bld/configure
 vim configure 
+ls
+cdscam
+ls
+vim configure 
+vim README
+pwd
+vim README
+cd SRC
+ls
+vim sam2camiop.ncl 
+vim sam2camic.ncl
+vim cam2camic.ncl 
+cdwrf
+ls
+sftp dnolan@visx.ccs.miami.edu
+ls
+rm Miami_SSH_obs.png 
+ls
+cd ..
+ls
+pwd
+ls
+cd ..
+ls
+pwd
+cd gchen
+ls
+pwd
+ls
+cd ..
+ls
+ls min
+ls ccsm4.0/
+ls
+ls kirtman
+ls kirtman/CESM1
+ls
+ls lsiqueira/
+ls
+mkdir -p cesm/inputdata
+ls
+cd cesm/inputdata/
+ls
+cd ..
+ls
+cd ..
+rm -pr cesm/inputdata/
+rm -rp cesm/inputdata/
+ls cesm
+rm -r cesm
+ls
+cdscam
+ls
+vim var_cami_0000-09-01_48x96_L26_c040420.txt 
+vim var_cami.txt 
+vim var_scami.txt 
+ls
+vim SRC/sam2camic.ncl
+ls
+cdcam
+ls
+grep PT *
+grep 'PT' *
+grep addfld('PT' *
+grep addfld(\'PT\' *
+grep 'addfld('PT'' *
+grep 'addfld(PT' *
+grep 'addfld('PT' *
+grep 'addfld('PT *
+cd ..
+ls
+grep 'addfld('PT *
+cd ..
+ls
+grep PT control/cam_restart.F90 
+grep PT control
+ls
+grep 
+grep PT *
+grep TEOUT *
+ls
+cdscam
+ls
+vim run-scam
+vim run-scam.csh
+cp run-scam.csh run-scam.csh.bak
+vim run-scam.csh
+ls
+rsync -av Ocn1Atm10.cam2.9.r.0126-01-01-00000.nc ginochen@yellowstone.ucar.edu:/glade/scratch/ginochen/SCAM/
+ls
+vim ~/.git/config
+vim ~/.bashrc
+git add SRC/
+gitcommit
+gitpush
+sftp ginochen@yellowstone.ucar.edu
+ls
+sftp ginochen@yellowstone.ucar.edu
+ls
+rsync -av gchen@pegasus2.ccs.miami.edu:/glade/scratch/ginochen/SCAM/SRC/ SRC
+ls SRC
+cd SRC
+ls
+vim README
+vim cam2camic.ncl
+ls
+vim cam2camic.ncl 
+vim sam2cami.ncl
+vim sam2camic.ncl
+vim ../var_cami_0000-01-01_64x128_L30_c090102.txt 
+vim sam2camic.ncl
+vim ../var_cami_0000-01-01_64x128_L30_c090102.txt 
+ls
+cd ..
+rsync -av cami_0000-01-01_64x128_L30_c090102.nc ginochen@yellowstone.ucar.edu:/glade/scratch/ginochen/SCAM/
+ls
+ncview cami_0000-01-01_64x128_L30_c090102.nc 
+ncview cami_0000-01-01_128x256_L26_c030918.nc 
+ncview cami_0000-09-01_48x96_L26_c040420.nc
+ls
+cd SRC
+ls
+vim sam2camic.ncl 
+ncl sam2camic.ncl 
+vim sam2camic.ncl
+ncl sam2camic.ncl
+vim sam2camic.ncl
+vim ../var_cami_0000-01-01_64x128_L30_c090102.txt 
+vim sam2camic.ncl
+ncl sam2camic.ncl
+vim sam2camic.ncl
+ncl sam2camic.ncl
+vim sam2camic.ncl
+ls
+cd ..
+ls
+vim README 
+ls
+ls lnd
+ls inputdata/lnd
+ls inputdata/lnd/clm2
+ls
+cd SRC
+ls
+vim cam2camic.ncl 
+vim -o ../var_cami_0000-01-01_64x128_L30_c090102.txt ../var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt 
+ls
+cdscam
+ls
+vim-o var_cami_0000-01-01_64x128_L30_c090102.txt var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt 
+vim -o var_cami_0000-01-01_64x128_L30_c090102.txt var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt 
+ls -lt var_cami_0000-01-01_64x128_L30_c090102.txt var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt 
+ls -lt var_cami_0000-01-01_64x128_L30_c090102.txt var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt*
+ls -lt *
+ls *.swp
+ls
+vim var -A
+ls -A
+rm .var*.swp
+ls
+ls -A
+rm .var_*
+ls
+vim -o var_cami_0000-01-01_64x128_L30_c090102.txt var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt 
+exit
+cdscam
+ls
+vim -o var_cami_0000-01-01_64x128_L30_c090102.txt var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt 
+ls
+cdscam
+ls
+vim -o var_cami_*2.txt var_Ocn1Atm10.cam2.9.r.0126-01-01-00000.txt 
+ls
+vim README 
+ls
+ncdump -h scratch/scam5_cam_togaII_1timestep14_togaII_L30_T60/camrun.cam.r.1992-12-18-64800.nc 
+vim run-scam.csh 
+vim ~/.bashrc
+source ~/.bashrc
+vim .git/config
+ls
+cdscam
+ls
+cdcam
+grep tcwat *
+cdscam
+ncview cami_0000-01-01_64x128_L30_c090102.nc 
+cdcam
+grep qpert *
+ncview cami_0000-01-01_64x128_L30_c090102.nc 
+cdscam
+ncview cami_0000-01-01_64x128_L30_c090102.nc 
+ls
+ls -lt | head -n10
+vim README 
+ls
+cd scratch/
+ls
+scp -r ginochen@yellowstone.ucar.edu:/glade/scratch/ginochen/SCAM/scam5_cam_togaII_1timestep14/scam5_cam_togaII_1timestep14_togaII_L30_T60 .
+ls
+cd scam5_cam_togaII_1timestep14_togaII_L30_T60/
+vim README
+ls
+pwd
+cd ..
+ls
+cd ..
+ls
+vim SRC/camCompare.ncl
+vim SRC/cam2camic.ncl 
+vim -o SRC/cam2camic.ncl SRC/findIOPpoint.ncl
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 

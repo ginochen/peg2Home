@@ -26,7 +26,7 @@ begin
 ;************************************************
   fn_SAM_3D = "/nethome/gchen/sam_cam_data/sam_output/gino/OUT_RCE.795162/OUT_3D/RCE_64x64x64_ctl_64_0000000120.nc"
   fn_SAM_2D = "/nethome/gchen/sam_cam_data/sam_output/gino/OUT_RCE.795162/OUT_2D/RCE_64x64x64_ctl_64.2Dcom_1.nc"
-  fn_CAMiop = "/nethome/gchen/SCAM/inputdata/scam/iop/TOGAII_4scam.nc" ; need only the lat lon 
+  fn_CAMiop = "/nethome/gchen/SCAM/inputdata/atm/cam/scam/iop/TOGAII_4scam.nc" ; need only the lat lon 
   fn_CAM    = "/nethome/gchen/SCAM/cami_0000-01-01_64x128_L30_c090102.nc"
 
   in_SAM_3D = addfile(fn_SAM_3D,"r")                         ; open netcdf file
@@ -160,7 +160,7 @@ begin
   T_CAM    = in_CAM->T
   TS_CAM   = in_CAM->TSOCN              ; TSOCN for TOGAII, TS for ARM
   Q_CAM    = in_CAM->Q
-  CWAT_CAM = in_CAM->CWAT
+  CWAT_CAM = in_CAM->LCWAT              ; LCWAT for TOGAII
   U_CAM    = in_CAM->U
   V_CAM    = in_CAM->V
   
@@ -176,7 +176,7 @@ begin
   in_CAM->T       = (/T_CAM/)
   in_CAM->TSOCN   = (/TS_CAM/)         ; TSOCN for TOGAII, TS for ARM
   in_CAM->Q       = (/Q_CAM/)
-  in_CAM->CWAT    = (/CWAT_CAM/)
+  in_CAM->LCWAT    = (/CWAT_CAM/)      ; LCWAT for TOGAII
   in_CAM->U       = (/U_CAM/)
   in_CAM->V       = (/V_CAM/)
   in_CAM->ts      = (/ts/)
