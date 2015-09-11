@@ -1,0 +1,1 @@
+/projects/rsmas/kirtman/gchen/WRF/var_wrfout_d01_0002-05-20_00:00:00.txt

@@ -1,37 +1,3 @@
-cd ..
-ls
-cd -
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-cd ..
-ls
-vim run-scam.csh
-ncdump -h cami_0000-01-01_64x128_L30_c090102.nc
-ls
-/nethome/gchen/SCAM/inputdata/atm/cam/chem/trop_mam/aero
-ls /nethome/gchen/SCAM/inputdata/atm/cam/chem/trop_mam/aero
-ls /nethome/gchen/SCAM/inputdata/atm/cam/topo/USGS-gtopo30_64x128_c050520.nc
-ls /nethome/gchen/SCAM/inputdata/inic/gaus/cami_0000-01-01_64x128_L30_c090102.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910.nc
-ls -lt /nethome/gchen/SCAM/inputdata/atm/cam/physprops/water_refindex_rrtmg_c080910.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/chem/trop_mam/aero
-ls /nethome/gchen/SCAM/inputdata/atm/cam/ozone
-ls /nethome/gchen/SCAM/inputdata/atm/cam/ozone/ozone_1.9x2.5_L26_2000clim_c091112.nc 
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/iceoptics_c080917.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/F_nwvl200_mu20_lam50_res64_t298_c080428.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc'
-ls /nethome/gchen/SCAM/inputdata/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/solar/solar_ave_sc19-sc23.c090810.nc
-ls /nethome/gchen/SCAM/inputdata/atm/cam/chem/trop_mozart/ub/clim_p_trop.nc
-ls
-ls ~/CESM/cesm/models/atm/cam/bld/namelist_files/use_cases/scam_togaII.xml 
 vim ~/CESM/cesm/models/atm/cam/bld/namelist_files/use_cases/scam_togaII.xml 
 ln -sf ~/CESM/cesm/models/atm/cam/bld/namelist_files/use_cases/scam_togaII.xml
 ls
@@ -998,3 +964,37 @@ ncl SRC/findIOPpoint.ncl
 vim SRC/findIOPpoint.ncl 
 ncl SRC/findIOPpoint.ncl 
 vim SRC/findIOPpoint.ncl 
+ls
+cdscam
+ls
+vim var_scamNeeded.txt 
+ls
+exit
+ls
+cdscam
+ls
+vim SRC/findIOPpoint.ncl 
+ncl SRC/findIOPpoint.ncl 
+vim SRC/findIOPpoint.ncl 
+vim run-scam.csh
+ls
+gitcommit
+git add SRC
+gitcommit
+gitpush
+git remote
+git remote -l
+git remote -v
+rsync -av SRC/ ginochen@yellowstone.ucar.edu:/glade/scratch/ginochen/SCAM/SRC
+exit
+matlab
+exit
+ls
+cdcam
+ls
+cdscam
+ls
+vim vim scam_togaII.xml 
+vim scam_togaII.xml 
+ls
+vim var_scamNeeded.txt 

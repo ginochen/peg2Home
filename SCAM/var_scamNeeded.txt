@@ -1,0 +1,10 @@
+needed
+ u, v, q, t, ts/tocn, ps,  phi, cldice, cldliq, cloud, numice, numliq, pblh,
+
+
+unknown
+ qpert, tbot, tcwat, tke, tpert 
+
+
+not needed
+cush, concld, kvh, kvm, lcwat, qcwat,

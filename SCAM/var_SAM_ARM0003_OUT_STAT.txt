@@ -1,0 +1,1 @@
+/projects/rsmas/kirtman/gchen/SAM/SAM_LES_80mx80mx80mx1s_M2005_ARM0003/OUT_STAT/var_STAT.txt
